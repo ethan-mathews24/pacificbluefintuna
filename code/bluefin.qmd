@@ -34,12 +34,47 @@ bluefin_original <- read.csv(here("data", "assessmentdata.csv"))
 bluefin_clean <- bluefin_original |> # creating a new data frame
   clean_names() |> # cleaning the names
   select(-unit, -x1_spr) |> # getting rid of unnecessary columns
-
+  rename(year = x)
 
 
 ```
 
 
+```{r Creating Visual}
+
+ggplot(data = bluefin_clean,
+       aes(x = year,
+           y = metric_tons,
+           color = year)) + 
+  
+  geom_point(size = 1, color = "blue4") +
+  
+  geom_line(linewidth = 0.5, color = "blue4") +
+  
+  labs(title = "United States Pacific Bluefin Tuna Stock Assessment",
+       x = "",
+       y = "Total Catch (metric ton)") +
+  
+  scale_x_continuous(breaks = seq(1952, 2022, by = 5),  # customize based on your data
+                     limits = c(1952, 2022)) +          # ensure it goes up to 2022
+
+  scale_y_continuous(labels = scales::comma) +          # adds commas to large numbers
+
+
+  theme_bw() +
+  
+  theme(panel.background = element_rect(fill = "white"), # changing the background color
+  panel.grid.major = element_line(color = "grey"), # removing the color to the grid lines
+  panel.grid.minor = element_line(color = "grey"), # removing the color to the grid lines
+  axis.title.x = element_text(size = 13),  # changing size of x axis title
+  axis.title.y = element_text(size = 13)) # changing size of y axis title
+
+  
+
+
+
+
+```
 
 
 
