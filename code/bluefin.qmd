@@ -51,26 +51,24 @@ ggplot(data = bluefin_clean,
   
   geom_line(linewidth = 0.5, color = "blue4") +
   
-  labs(title = "United States Pacific Bluefin Tuna Stock Assessment",
+  labs(title = "United States Pacific Bluefin Stock Assessment",
        x = "",
        y = "Total Catch (metric ton)") +
   
   scale_x_continuous(breaks = seq(1952, 2022, by = 5),  # customize based on your data
                      limits = c(1952, 2022)) +          # ensure it goes up to 2022
-
-  scale_y_continuous(labels = scales::comma) +          # adds commas to large numbers
-
+  
+  scale_y_continuous(breaks = seq(0,16000, by = 2000),
+                     limits = c(0, 16000),
+                     labels = scales::comma) +
 
   theme_bw() +
   
   theme(panel.background = element_rect(fill = "white"), # changing the background color
-  panel.grid.major = element_line(color = "grey"), # removing the color to the grid lines
-  panel.grid.minor = element_line(color = "grey"), # removing the color to the grid lines
-  axis.title.x = element_text(size = 13),  # changing size of x axis title
-  axis.title.y = element_text(size = 13)) # changing size of y axis title
-
-  
-
+  panel.grid.major = element_line(color = "white"), # removing the color to the grid lines
+  panel.grid.minor = element_line(color = "white"), # removing the color to the grid lines
+  axis.title.y = element_text(size = 11), # changing size of y axis title
+  axis.text.x = element_text(angle = 45, hjust = 1)) # rotating the years to fit better along x-axis
 
 
 
