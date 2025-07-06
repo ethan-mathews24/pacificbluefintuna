@@ -1,0 +1,48 @@
+---
+title: "bluefin"
+format: html
+---
+
+```{r Packages}
+#| message: false
+
+# Reading in Packages
+library(tidyverse) # general use 
+library(gt) # creating summary tables
+library(janitor) # cleaning data frames 
+library(here) # file organization
+library(readxl) # reading excel files
+library(ggeffects) # getting model predictions
+library(MuMIn) # model selection
+library(DHARMa) # to check diagnostics from the model
+library(fs) # fs::dir_tree(path = ".", recurse = TRUE) in console to get file structure 
+
+
+```
+
+
+```{r Data}
+
+bluefin_original <- read.csv(here("data", "assessmentdata.csv"))
+
+
+```
+
+
+```{r Clean Data}
+
+bluefin_clean <- bluefin_original |> # creating a new data frame
+  clean_names() |> # cleaning the names
+  select(-unit, -x1_spr) |> # getting rid of unnecessary columns
+
+
+
+```
+
+
+
+
+
+
+
+
